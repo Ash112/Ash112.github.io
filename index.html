@@ -14,10 +14,20 @@ body {
 }
 
 </style>
-
-
 <body>
 
+
+<audio autoplay id="myaudio">
+  <source src="/static/audio/bgmusiccut.mp3">
+</audio>
+
+<script>
+  var audio = document.getElementById("myaudio");
+  audio.volume = 0.1;
+</script>
+
+
+<!--<embed src="/static/audio/bgmusiccut.mp3" loop="true" autostart="true">
 <!-- Navbar (sit on top) -->
 <div class="w3-top ">
   <div class="w3-padding-small w3-white w3-wide w3-padding w3-border-bottom w3-border-light-grey">
@@ -92,7 +102,7 @@ body {
 
     <p>Find me on Linkedin.
     </p>
-      <a href="https://www.linkedin.com/in/ashwinkumarp/" class="w3-bar-item w3-button w3-border">Profile</a>
+      <a href="https://github.com/Ash112/Dynamo-Package" class="w3-bar-item w3-button w3-border">Profile</a>
 
   </div>
 </div>

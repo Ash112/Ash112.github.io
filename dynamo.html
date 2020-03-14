@@ -14,7 +14,14 @@ body {
 }
 </style>
 <body>
+<audio autoplay id="myaudio">
+  <source src="/static/audio/bgmusiccut.mp3">
+</audio>
 
+<script>
+  var audio = document.getElementById("myaudio");
+  audio.volume = 0.1;
+</script>
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-padding-small w3-white w3-wide w3-padding w3-border-bottom w3-border-light-grey">
