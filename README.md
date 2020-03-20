@@ -1,3 +1,3 @@
-# www.Ash112.github.io
+# Ash112.github.io
 
 Portfolio Website
