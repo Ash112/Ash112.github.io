@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<link rel="shortcut icon" type="image/png" href="/static/icons/favicon.png"/>
+<title>Freelance Work</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/css/w3.css">
+<link rel="stylesheet" href="static/css/izmir.min.css">
+<link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'>
+<style type="text/css">
+body {
+    font-family: 'Anaheim';font-size: 19px;
+    background:none transparent;
+}
+
+</style>
+<body>
+
+<audio autoplay id="myaudio">
+  <source src="/static/audio/bgmusiccut.mp3">
+</audio>
+
+<script>
+  var audio = document.getElementById("myaudio");
+  audio.volume = 0.1;
+</script>
+
+<!-- Navbar (sit on top) -->
+
+<div class="w3-top">
+  <div class="w3-padding-small w3-white w3-wide w3-padding w3-border-bottom w3-border-light-grey">
+    <a href="#about" class="w3-bar-item w3-button"><b>Ashwin Kumar</b><b> IGBC AP</b></a>
+
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="/" class="w3-bar-item w3-button">Home</a>
+      <a href="/" class="w3-bar-item w3-button">About</a>
+      <a href="/" class="w3-bar-item w3-button">Contact</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- About Section -->
+  <div class="w3-container w3-center w3-padding-32 " id="about">
+      <!-- Spacing -->
+      <h1 class=" w3-center w3-padding-large "></h1>
+    <h3 class=" w3-border-light-grey w3-center w3-padding-16 w3-border ">FREELANCE WORK</h3>
+  </div>
+
+<div class="w3-center w3-margin w3-padding-large">
+<!-- Projects ///main Button Links/// -->
+<div class="w3-container w3-margin-left w3-margin-right w3-border w3-padding-16 w3-border-light-grey">
+
+<div class="w3-container w3-margin-left w3-margin-right  w3-padding-16 ">
+<button onclick="myFunction('Demo1')" class="w3-button w3-block w3-border w3-padding-16 w3-border-light-grey">Revit - BuildSystem Integration</button>
+<div id="Demo1" class="w3-container w3-border w3-hide w3-light-grey">
+  <p>Checking Feasibility of implementing features by the Revit API
+- Coordinating between client and BIM Contractor
+- Reviewing BIM contractor project proposals</p>
+</div></div>
+
+<div class="w3-container w3-margin-left w3-margin-right  w3-padding-16 ">
+<button onclick="myFunction('Demo2')" class="w3-button w3-block w3-border w3-padding-16 w3-border-light-grey">Architectural Design & Estimation</button>
+<div id="Demo2" class="w3-container w3-border w3-hide w3-light-grey">
+  <p>Created Architectural Drawings for Residential & Commercial Buildings
+- Created BOQ, BBS and Project Estimate for Residential Projects
+- Created Architectural Renderings for Residential Buildings</p>
+</div></div>
+
+<div class="w3-container w3-margin-left w3-margin-right  w3-padding-16 ">
+<button onclick="myFunction('Demo3')" class="w3-button w3-block w3-border w3-padding-16 w3-border-light-grey">Game Art assets</button>
+<div id="Demo3" class="w3-container w3-border w3-hide w3-light-grey">
+  <p>Created 2D game art assets using PhotoShop</p>
+</div></div>
+
+
+</div>
+</div>
+
+<script>
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>
+
+
+</div>
+
+<!-- Spacing -->
+  <div class="w3-container w3-center w3-padding-16">
+  <!-- Spacing -->
+  <h1 class="W3-BORDER-BOTTOM w3-border-light-grey w3-center w3-padding-32"></h1>
+  </div>
+
+<!-- Footer -->
+<footer class="w3-center w3-card-2 w3-bottom w3-white w3-padding-small" id="footer">
+    <a href="https://www.linkedin.com/in/ashwinkumarp/" title="Linkedin">
+      <!-- Spacing -->
+  <div class="w3-padding-small"></div>
+  <!-- Spacing -->
+    <img src="/static/icons/translinkedin.png" style="width:1%"></a></div>
+</footer>
+
+</body>
+</html>
