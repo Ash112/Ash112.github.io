@@ -1,0 +1,21 @@
+body {
+	  margin: 0;
+	  overflow: visible;
+}
+
+
+#overlay {
+
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.ui {
+position: absolute;
+    top: 0;
+	left: 9%;
+    right: 9%;
+}
