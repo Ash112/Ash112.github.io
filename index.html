@@ -3,20 +3,27 @@
 <link rel="shortcut icon" type="image/png" href="/static/icons/favicon.png"/>
 <title>Portfolio Home</title>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="static/css/w3.css">
 <link rel="stylesheet" href="static/css/hover.css">
 <link rel="stylesheet" href="static/css/izmir.min.css">
 <link rel="stylesheet" href="static/css/3dbg.css">
 <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'>
+
 <style>
 body {
     font-family: 'Anaheim';font-size: 19px;
 }
-
 </style>
-<body>
+<head>
+        <script src="/static/js/three.js"></script>
+        <script src="/static/js/OrbitControls.js"></script>
+        <script src="/static/js/OBJLoader.js"></script>
+        <script src="/static/js/MTLLoader.js"></script>
 
+</head>
+<body>
 
 <audio autoplay id="myaudio">
   <source src="/static/audio/bgmusiccut.mp3">
@@ -41,25 +48,27 @@ body {
   </div>
 </div>
 
-
 <!-- Page content -->
-<div class="w3-content w3-center w3-padding-32" style="max-width:1564px" >
+<div class="w3-content w3-center w3-padding-32  ui" style="max-width:1564px" >
+
+<!-- 3d Background-->
+<script src="/static/js/3dbackground.js"></script>
 
   <!-- Project Section -->
   <div class="w3-container w3-padding-32 w3-center" id="projects">
-            <!-- Spacing -->
+      <!-- Spacing -->
       <h1 class="w3-border-light-grey w3-center w3-padding-16"></h1>
 
     <h3 class="w3-border-bottom w3-center w3-border-light-grey w3-padding-16 w3-border">PORTFOLIO</h3>
   </div>
 
 
-	<!-- Projects ///main Button Links/// -->
+<!-- Projects ///main Button Links/// -->
 <div class="w3-row-padding w3-center" >
 
 
 
-   <div class="w3-col 13 m3 w3-center w3-hover-opacity w3-display-container">
+   <div class="w3-col 13 m3 w3-center w3-hover-opacity w3-display-container ">
         <a href="/revitplugin" >
             <div class="w3-display-bottommiddle we-center w3-black w3-padding">Revit Plugin</div>
          <img src="/static/icons/revitimgfinal.jpg" style="width:50%" /></a>
@@ -85,8 +94,7 @@ body {
 
 </div>
 
-    <!-- End of first Row -->
-
+  <!-- End of first Row -->
   <div class="w3-center w3-row-padding w3-padding-32">
 
       <div class="w3-col 13 m3 w3-hover-opacity w3-display-container">
@@ -100,7 +108,7 @@ body {
       <div class="w3-col 13 m3 w3-display-container w3-hover-opacity">
         <a href="/bim">
         <div class="w3-display-bottommiddle we-center w3-black w3-padding">BIM</div>
-            <img src="/static/icons/emptyfinal.jpg" style="width:50%"/></a>
+            <img src="/static/icons/bimfinal.jpg" style="width:50%"/></a>
       </div>
 
       <!-- Empty -->
@@ -108,7 +116,7 @@ body {
       <div class="w3-col 13 m3 w3-display-container w3-hover-opacity">
         <a href="/freelance">
         <div class="w3-display-bottommiddle we-center w3-black w3-padding">Freelance Work</div>
-         <img src="/static/icons/emptyfinal.jpg" style="width:50%"/></a>
+         <img src="/static/icons/freelancefinal.jpg" style="width:50%"/></a>
       </div>
 
       <!-- Empty -->
