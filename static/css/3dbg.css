@@ -26,3 +26,55 @@ position: absolute;
 	left: 9%;
     right: 9%;
 }
+
+
+.container {
+
+  width: 100px;
+  height: 200px;
+  border: 1px solid;
+  left: 9%;
+  right: 9%;
+
+}
+
+.gridcontainer {
+    display: grid;
+    grid-gap: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(0, 300px);
+    left: 9%;
+    right: 9%;
+    margin:auto;
+
+}
+
+.navbarindex{
+
+z-index:5;
+}
+
+
+menubutton {
+
+transition: background 0.8s;
+transition: all 0.7s ease-in-out;
+color: #DCDCDC;
+
+}
+
+menubutton:hover {
+transform: scale(1.05);
+
+}
+
+.menubuttonanim{
+
+transition: background 0.8s;
+}
+
+.menubuttonanim:active {
+
+transform: scale(0.98); translateY(10px);
+
+}
