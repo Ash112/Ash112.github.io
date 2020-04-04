@@ -1,6 +1,23 @@
 body {
 	  margin: 0;
 	  overflow: visible;
+    font-family: 'Anaheim';font-size: 19px;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+
+
+    }
+    100% {
+        opacity: 1;
+     }
+}
 }
 
 
@@ -31,7 +48,7 @@ position: absolute;
 .container {
 
   width: 100px;
-  height: 200px;
+  height: 150px;
   border: 1px solid;
   left: 9%;
   right: 9%;
@@ -40,14 +57,15 @@ position: absolute;
 
 .gridcontainer {
     display: grid;
-    grid-gap: 100px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(0, 300px);
-    left: 9%;
-    right: 9%;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(0, 100px);
+    left: 5%;
+    right: 5%;
     margin:auto;
 
 }
+
 
 .navbarindex{
 
@@ -59,13 +77,13 @@ menubutton {
 
 transition: background 0.8s;
 transition: all 0.7s ease-in-out;
-color: #DCDCDC;
+
 
 }
 
 menubutton:hover {
 transform: scale(1.05);
-
+box-shadow: none;
 }
 
 .menubuttonanim{
@@ -76,5 +94,15 @@ transition: background 0.8s;
 .menubuttonanim:active {
 
 transform: scale(0.98); translateY(10px);
+
+}
+
+#fillheight {
+    height: 100vh;
+
+}
+
+#fillwidth {
+    width: 100vw;
 
 }
