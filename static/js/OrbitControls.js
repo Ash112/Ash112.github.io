@@ -11,13 +11,13 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.center = new THREE.Vector3();
 
 	this.userZoom = true;
-	this.userZoomSpeed = 0.9;
+	this.userZoomSpeed = 3;
 
 	this.userRotate = true;
-	this.userRotateSpeed = 0.8;
+	this.userRotateSpeed = 1;
 
 	this.userPan = true;
-	this.userPanSpeed = 2.0;
+	this.userPanSpeed = 4.0;
 
 	this.autoRotate = false;
 	this.autoRotateSpeed = 0.4; // 30 seconds per round when fps is 60
@@ -25,8 +25,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.minPolarAngle = 0; // radians
 	this.maxPolarAngle = (3.14/2)-0.05; // radians
 
-	this.minDistance = 250;
-	this.maxDistance = 500;
+	this.minDistance = 200;
+	this.maxDistance = 800;
 
 	// 65 /*A*/, 83 /*S*/, 68 /*D*/
 	this.keys = { LEFT: 37, UP: 38, RIGHT: 39, BOTTOM: 40, ROTATE: 65, ZOOM: 83, PAN: 68 };
