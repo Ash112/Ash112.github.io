@@ -15,8 +15,26 @@ camera.aspect = window.innerWidth / window.innerHeight;
 camera.updateProjectionMatrix();
 })
 
+// variables for leading amgnaer
+var loadingManager = null;
+var RESOURCES_LOADED = false;
+
+
 function init()
 {
+    // loading manger
+
+	loadingManager = new THREE.LoadingManager();
+
+	loadingManager.onProgress = function(item, loaded, total){
+		console.log(item, loaded, total);
+	};
+
+	loadingManager.onLoad = function(){
+		console.log("loaded all resources");
+		RESOURCES_LOADED = true;
+	};
+
     // defines a new webgl renderer
     renderer = new THREE.WebGLRenderer( {antialias:true,alpha: true } );
     var width = window.innerWidth;
@@ -28,16 +46,16 @@ function init()
     scene = new THREE.Scene();
 
     //new camera looking at origin
-    camera = new THREE.PerspectiveCamera (75, width/height, 1, 1000);
-    camera.position.y = 160;
-    camera.position.x = -350;
-    camera.position.z = 150;
+    camera = new THREE.PerspectiveCamera (75, width/height, 1, 1900);
+    camera.position.y = 190;
+    camera.position.x = -390;
+    camera.position.z = 190;
     camera.lookAt (new THREE.Vector3(0,0,0));
 
     // camera rotate controls / seperate JS file
     controls = new THREE.OrbitControls (camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.1;
+    controls.dampingFactor = 0.5;
     controls.enableZoom = true;
     controls.autoRotate = true;
     controls.minDistance = 75;
@@ -82,7 +100,7 @@ scene.add(plane);
 var textureLoader = new THREE.TextureLoader();
 
 // texture loader not assigned yet
-var map = textureLoader.load("/static/others/whitecolor.jpg");
+//var map = textureLoader.load("/static/others/whitecolor.jpg");
 
 var ballTexture = textureLoader.load("/static/icons/circledot1.png");
 
@@ -94,7 +112,7 @@ var material = new THREE.MeshLambertMaterial( { color: 0xDEDEDE  } );
 var wireframeMaterial = new THREE.LineBasicMaterial( { color: 0xA5A5A5  } );
 
   //instantiate a loader to load OBJ Files.
-    var loader = new THREE.OBJLoader();
+    var loader = new THREE.OBJLoader(loadingManager);
 
     loader.load(
     //object to load
@@ -124,12 +142,8 @@ var wireframeMaterial = new THREE.LineBasicMaterial( { color: 0xA5A5A5  } );
 	object.rotateX(-(3.1416/2));
 
 	},
-    //sprite for model loading animation
-
-
-	// called when loading is in progress
+// called when loading is in progress
 	function ( xhr ) {
-
     //displays loading text on screen
 	//var text2 = document.createElement('div');
    //text2.style.position = 'absolute';
@@ -137,13 +151,10 @@ var wireframeMaterial = new THREE.LineBasicMaterial( { color: 0xA5A5A5  } );
     //text2.style.height = 100;
     //text2.style.top = 100/2 + 'vh';
     //text2.style.left = 100/2 + 'vw';
+   // text2.innerHTML = "hi there!";
     //document.body.appendChild(text2);
-
-
-
     var loadvalue =( xhr.loaded / xhr.total * 100 );
 	console.log( loadvalue);
-
 
 	},
 	// called when loading has errors
@@ -169,7 +180,7 @@ group = new THREE.Group();
 var dotexture = textureLoader.load("/static/icons/circledot1.png");
 
 
-//info1 texture
+//info texture
 var infotext1 = textureLoader.load("/static/icons/info1.png");
 var infotext2 = textureLoader.load("/static/icons/info2.png");
 var infotext3 = textureLoader.load("/static/icons/info3.png");
@@ -181,42 +192,68 @@ var infotext6 = textureLoader.load("/static/icons/info6.png");
 //var axesHelper = new THREE.AxesHelper( 250 );
 //scene.add( axesHelper );
 
-//spriteset 1
+//line from floor
+function drwline(point1,point2){
+
+var materialline = new THREE.LineBasicMaterial({
+	color: 0xE6E6E6
+});
+var points1 = [];
+points1.push(point1 );
+points1.push( point2 );
+var geometry1 = new THREE.BufferGeometry().setFromPoints( points1 );
+var line1 = new THREE.Line( geometry1,materialline );
+scene.add( line1 );
+}
+
+//spriteset 1 // have to recode as function!
 // y value set at hover function
 var spritedot1 = new THREE.Sprite( new THREE.SpriteMaterial(  {map: dotexture}  ) );
 			spritedot1.position.set( -300, 160, -100 );
             spritedot1.scale.set( 5, 5, 5 );
 			group.add( spritedot1 );
 
+drwline(new THREE.Vector3( -300, 146, -100),new THREE.Vector3( -300, 10, -100) );
+
 //spriteset 2
 var spritedot2 = new THREE.Sprite( new THREE.SpriteMaterial(  {map: dotexture}  ) );
-			spritedot2.position.set( 10, 150, 160 );
+			spritedot2.position.set( 10, 160, 160 );
             spritedot2.scale.set( 5, 5, 5 );
 			group.add( spritedot2 );
 
+drwline(new THREE.Vector3( 10, 156, 160 ),new THREE.Vector3( 10, 110, 160 ) );
+
 //spriteset 3
 var spritedot3 = new THREE.Sprite( new THREE.SpriteMaterial(  {map: dotexture}  ) );
-			spritedot3.position.set( 0, 250, 0 );
+			spritedot3.position.set( 0, 155, 0 );
             spritedot3.scale.set( 5, 5, 5 );
 			group.add( spritedot3 );
 
+drwline(new THREE.Vector3( 0, 155, 0  ),new THREE.Vector3( 0, 10, 0  ) );
+
 //spriteset 4
 var spritedot4 = new THREE.Sprite( new THREE.SpriteMaterial(  {map: dotexture}  ) );
-			spritedot4.position.set( 180, 190, -180 );
+			spritedot4.position.set( 180, 190, -210 );
             spritedot4.scale.set( 5, 5, 5 );
 			group.add( spritedot4 );
 
+drwline(new THREE.Vector3( 180, 145, -210 ),new THREE.Vector3( 180, 10, -210) );
+
 //spriteset 5
 var spritedot5 = new THREE.Sprite( new THREE.SpriteMaterial(  {map: dotexture}  ) );
-			spritedot5.position.set( 240, 90, 0 );
+			spritedot5.position.set( 240, 100, 0 );
             spritedot5.scale.set( 5, 5, 5 );
 			group.add( spritedot5 );
 
+drwline(new THREE.Vector3( 240, 95, 0 ),new THREE.Vector3( 240, 75, 0) );
+
 //spriteset 6
 var spritedot6 = new THREE.Sprite( new THREE.SpriteMaterial(  {map: dotexture}  ) );
-			spritedot6.position.set( 0, 50, -75 );
+			spritedot6.position.set( 0, 35, -75 );
             spritedot6.scale.set( 5, 5, 5 );
 			group.add( spritedot6 );
+
+drwline(new THREE.Vector3( 0, 30, -75 ),new THREE.Vector3( 0, 10, -75) );
 
 // hover animation variables
 var clock = new THREE.Clock();
@@ -233,7 +270,7 @@ function hoverdot() {
   delta = clock.getDelta();
   time += delta;
 
-
+// TB recoded as function
 if (spritedot1.material.map==dotexture){
   spritedot1.position.y = 150 + (Math.sin(time * 2.5)) * 3;
   spritedot1.scale.y = 4 + Math.abs(Math.sin(time * 1));
@@ -241,7 +278,7 @@ if (spritedot1.material.map==dotexture){
 
   }
 if (spritedot2.material.map==dotexture){
-  spritedot2.position.y = 150 + (Math.cos(time * 2.5)) * 3;
+  spritedot2.position.y = 160 + (Math.cos(time * 2.5)) * 3;
   spritedot2.scale.y = 4 + Math.abs(Math.sin(time * 1));
   spritedot2.scale.x = 4 + Math.abs(Math.sin(time * 1));
   }
@@ -269,8 +306,6 @@ if (spritedot6.material.map==dotexture){
   spritedot6.scale.y = 4 + Math.abs(Math.sin(time * 1));
   spritedot6.scale.x = 4 + Math.abs(Math.sin(time * 1));
   }
-
-
 
   renderer.render(scene, camera);
  //hover animation ends
@@ -304,26 +339,26 @@ if (spritedot6.material.map==dotexture){
                     //interaction for dot1
 					if(selectedObject == spritedot1)
 					{
-					selectedObject.scale.set( 75, 75, 15 );
+					selectedObject.scale.set( 75, 65, 15 );
                     selectedObject.material.map=infotext1;
 
 					}
 					//interaction for dot2
 					if(selectedObject == spritedot2)
 					{
-					selectedObject.scale.set( 75, 75, 15 );
+					selectedObject.scale.set( 75, 65, 15 );
                     selectedObject.material.map=infotext2;
 					}
 					//interaction for dot3
 					if(selectedObject == spritedot3)
 					{
-					selectedObject.scale.set( 75, 60, 15 );
+					selectedObject.scale.set( 75, 50, 15 );
                     selectedObject.material.map=infotext3;
 					}
 					//interaction for dot4
 					if(selectedObject == spritedot4)
 					{
-					selectedObject.scale.set( 75, 75, 15 );
+					selectedObject.scale.set( 75, 35, 15 );
                     selectedObject.material.map=infotext4;
 					}
 					//interaction for dot5
@@ -335,13 +370,12 @@ if (spritedot6.material.map==dotexture){
 					//interaction for dot6
 					if(selectedObject == spritedot6)
 					{
-					selectedObject.scale.set( 70, 45, 15 );
+					selectedObject.scale.set( 70, 40, 15 );
                     selectedObject.material.map=infotext6;
 					}
 				}
 			}
 		}
-
 
 		var raycaster = new THREE.Raycaster();
 		var mouseVector = new THREE.Vector3();
@@ -359,18 +393,15 @@ if (spritedot6.material.map==dotexture){
 // raycaster ends
 
 
-
 // Particle system for random floaty particles
   particle = new THREE.Object3D();
 
   scene.add(particle);
 
-  var geometry = new THREE.SphereGeometry(0.25, 0);
+   // spheres with flat shading
+  var geometry = new THREE.SphereGeometry(0.25,);
 
-  var materialpar = new THREE.MeshPhongMaterial({
-    color: 0x000000,
-    shading: THREE.FlatShading
-  });
+  var materialpar = new THREE.MeshBasicMaterial({color: 0x000000});
 
   for (var i = 0; i < 500; i++) {
     var mesh = new THREE.Mesh(geometry, materialpar);
@@ -379,8 +410,6 @@ if (spritedot6.material.map==dotexture){
     //mesh.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
     particle.add(mesh);
   }
-
-
 //end
 };
 
@@ -390,38 +419,39 @@ function  rotatescene() {
     particle.rotation.z += 0.0001
   }
 
+//loding picture
+var loadingtexture = new THREE.TextureLoader();
+
+var loadtext = loadingtexture.load("/static/icons/loading.png");
+
+var loadingsprite = new THREE.Sprite( new THREE.SpriteMaterial(  {map: loadtext } ) );
+			loadingsprite.position.set( 0, 40, 0 );
+            loadingsprite.scale.set( 95, 22, 0 );
+			scene.add(loadingsprite)
+
 // animates the whole scene
 function animate()
 {
+// does nothing ATM
+if( RESOURCES_LOADED == false ){
 
+        requestAnimationFrame ( animate );
+        //console.log(RESOURCES_LOADED);
+
+		return; // Stop the function here.
+	}
+	else{
+
+	//removes loading texture once model is loaded
+    scene.remove(loadingsprite);
+
+    //rotates particles
     rotatescene();
     controls.update();
     requestAnimationFrame ( animate );
     renderer.render (scene, camera);
-
-
+    }
 };
 
 
-// ball animation at center
-
-var ball = new THREE.Mesh(new THREE.SphereGeometry(0.5, 16, 8), new THREE.MeshBasicMaterial({
-  color: 0x000000,
-}));
-scene.add(ball);
-
-var clock = new THREE.Clock();
-var time = 0;
-var delta = 0;
-
-render();
-
-function render() {
-  requestAnimationFrame(render);
-  delta = clock.getDelta();
-  time += delta;
-  ball.position.y = 0.25 + Math.abs(Math.sin(time * 3)) * 10;
-  //ball.position.x = Math.cos(time) * 85 ;
-  renderer.render(scene, camera);
-}
 
