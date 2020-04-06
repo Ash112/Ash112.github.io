@@ -1,3 +1,10 @@
-# Ash112.github.io
+# Portfolio Website
 
-Portfolio Website
+A complete portfolio of all my projects
+
+## Built With
+
+* [Three.js] 
+* [flask] 
+* [HTML] 
+* [CSS] 
